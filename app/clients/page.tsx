@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Plus, Search, Phone, Mail, MapPin, Trash2, Edit } from 'lucide-react'
+import { Plus, Search, Phone, Mail, Trash2, Edit } from 'lucide-react'
 
 // Mock data - será substituído por dados do Supabase
 const mockClients = [
