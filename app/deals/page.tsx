@@ -12,7 +12,7 @@ const mockDeals = [
   {
     id: '1',
     clientName: 'João Silva',
-    planType: 'vehicles',
+    planType: 'vehicles' as const,
     value: 8500,
     status: 'won' as const,
     expectedCloseDate: '2024-01-25',
@@ -21,7 +21,7 @@ const mockDeals = [
   {
     id: '2',
     clientName: 'Maria Santos',
-    planType: 'plans',
+    planType: 'plans' as const,
     value: 5200,
     status: 'negotiating' as const,
     expectedCloseDate: '2024-02-15',
@@ -30,7 +30,7 @@ const mockDeals = [
   {
     id: '3',
     clientName: 'Carlos Oliveira',
-    planType: 'properties',
+    planType: 'properties' as const,
     value: 15000,
     status: 'open' as const,
     expectedCloseDate: '2024-03-01',

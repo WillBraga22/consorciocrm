@@ -86,19 +86,16 @@ export default function TasksPage() {
 
   const handleToggleTask = (id: string) => {
     setTasks(
-      tasks.map((t) =>
-        t.id === id
-          ? {
-              ...t,
-              status:
-                t.status === 'completed'
-                  ? 'pending'
-                  : t.status === 'pending'
-                  ? 'in_progress'
-                  : 'completed',
-            }
-          : t
-      )
+      tasks.map((t) => {
+        if (t.id !== id) return t
+        const nextStatus =
+          t.status === 'completed'
+            ? ('pending' as const)
+            : t.status === 'pending'
+            ? ('in_progress' as const)
+            : ('completed' as const)
+        return { ...t, status: nextStatus }
+      })
     )
   }
 
