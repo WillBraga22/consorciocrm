@@ -8,14 +8,28 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Plus, Search, CheckCircle, AlertCircle, Clock, Trash2, Edit } from 'lucide-react'
 
 // Mock data
-const mockTasks = [
+type TaskPriority = 'low' | 'medium' | 'high'
+type TaskStatus = 'pending' | 'in_progress' | 'completed'
+
+interface MockTask {
+  id: string
+  title: string
+  description: string
+  clientId: string
+  priority: TaskPriority
+  status: TaskStatus
+  dueDate: string
+  createdAt: string
+}
+
+const mockTasks: MockTask[] = [
   {
     id: '1',
     title: 'Follow-up com João Silva',
     description: 'Ligar para confirmar interesse em consórcio de veículos',
     clientId: '1',
-    priority: 'high' as const,
-    status: 'pending' as const,
+    priority: 'high',
+    status: 'pending',
     dueDate: '2024-01-30',
     createdAt: '2024-01-25',
   },
@@ -24,8 +38,8 @@ const mockTasks = [
     title: 'Enviar proposta para Maria',
     description: 'Enviar proposta customizada de consórcio de planos',
     clientId: '2',
-    priority: 'medium' as const,
-    status: 'in_progress' as const,
+    priority: 'medium',
+    status: 'in_progress',
     dueDate: '2024-02-01',
     createdAt: '2024-01-26',
   },
@@ -34,8 +48,8 @@ const mockTasks = [
     title: 'Preparar documentação',
     description: 'Preparar documentação para análise de crédito',
     clientId: '3',
-    priority: 'high' as const,
-    status: 'completed' as const,
+    priority: 'high',
+    status: 'completed',
     dueDate: '2024-01-28',
     createdAt: '2024-01-20',
   },
@@ -86,14 +100,14 @@ export default function TasksPage() {
 
   const handleToggleTask = (id: string) => {
     setTasks(
-      tasks.map((t) => {
+      tasks.map((t): MockTask => {
         if (t.id !== id) return t
-        const nextStatus =
+        const nextStatus: TaskStatus =
           t.status === 'completed'
-            ? ('pending' as const)
+            ? 'pending'
             : t.status === 'pending'
-            ? ('in_progress' as const)
-            : ('completed' as const)
+            ? 'in_progress'
+            : 'completed'
         return { ...t, status: nextStatus }
       })
     )

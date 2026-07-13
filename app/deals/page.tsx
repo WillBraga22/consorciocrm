@@ -8,31 +8,44 @@ import { Plus, Search, DollarSign, Calendar, Trash2, Edit } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 
 // Mock data
-const mockDeals = [
+type DealPlanType = 'plans' | 'vehicles' | 'properties'
+type DealStatus = 'open' | 'negotiating' | 'won' | 'lost'
+
+interface MockDeal {
+  id: string
+  clientName: string
+  planType: DealPlanType
+  value: number
+  status: DealStatus
+  expectedCloseDate: string
+  createdAt: string
+}
+
+const mockDeals: MockDeal[] = [
   {
     id: '1',
     clientName: 'João Silva',
-    planType: 'vehicles' as const,
+    planType: 'vehicles',
     value: 8500,
-    status: 'won' as const,
+    status: 'won',
     expectedCloseDate: '2024-01-25',
     createdAt: '2024-01-15',
   },
   {
     id: '2',
     clientName: 'Maria Santos',
-    planType: 'plans' as const,
+    planType: 'plans',
     value: 5200,
-    status: 'negotiating' as const,
+    status: 'negotiating',
     expectedCloseDate: '2024-02-15',
     createdAt: '2024-02-05',
   },
   {
     id: '3',
     clientName: 'Carlos Oliveira',
-    planType: 'properties' as const,
+    planType: 'properties',
     value: 15000,
-    status: 'open' as const,
+    status: 'open',
     expectedCloseDate: '2024-03-01',
     createdAt: '2024-02-10',
   },

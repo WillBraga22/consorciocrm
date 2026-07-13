@@ -8,14 +8,26 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Plus, Search, Phone, Mail, Trash2, Edit } from 'lucide-react'
 
 // Mock data - será substituído por dados do Supabase
-const mockClients = [
+type ClientStatus = 'prospect' | 'client' | 'inactive'
+
+interface MockClient {
+  id: string
+  name: string
+  email: string
+  phone: string
+  cpf: string
+  status: ClientStatus
+  created_at: string
+}
+
+const mockClients: MockClient[] = [
   {
     id: '1',
     name: 'João Silva',
     email: 'joao@email.com',
     phone: '(11) 98765-4321',
     cpf: '123.456.789-00',
-    status: 'client' as const,
+    status: 'client',
     created_at: '2024-01-15',
   },
   {
@@ -24,7 +36,7 @@ const mockClients = [
     email: 'maria@email.com',
     phone: '(11) 97654-3210',
     cpf: '987.654.321-00',
-    status: 'prospect' as const,
+    status: 'prospect',
     created_at: '2024-01-20',
   },
   {
@@ -33,7 +45,7 @@ const mockClients = [
     email: 'carlos@email.com',
     phone: '(11) 96543-2109',
     cpf: '456.789.123-00',
-    status: 'client' as const,
+    status: 'client',
     created_at: '2024-02-05',
   },
 ]
